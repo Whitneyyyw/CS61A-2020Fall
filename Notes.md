@@ -2,7 +2,7 @@
 
 A course about managing **complexity** 
 
-- Mastering abstraction
+- Mastering abstraction 抽象是计算机的核心思想之一
 
 > Abstraction: You've giving a name to something that's complicated  and not worrying about its parts.
 
@@ -28,23 +28,25 @@ Functions; Values; Objects; Interpreters; Data
 >
 > 例如，考虑以下数学表达式：2 + 3 × 4 - (6 ÷ 2)
 
+**CLI使用tips：**
+
 查看当前目录：`cmd: dir`VS`powershell: ls`
 
 进入家目录：`cd == cd ~`
 
-`python -i test.py` 执行一遍`test.py`脚本，然后进入交互式命令
+`python -i test.py` 执行一遍`test.py`脚本，然后进入交互式命令【`-i` 参数】
 
-`python3 -m doctest test.py` 用于运行`test.py`文档测试
+`python3 -m doctest test.py` 用于运行`test.py`文档测试【`-m doctest` 参数】
 
 `start .` 在资源管理器中打开当前文件夹
 
 # Lecture 2. Functions
 
-1. calculator: call expression
+1. 所有类型的表达式都可以用call expression表达 -- Python可以看作一个calculator
 2. Types of expressions: 
    - Primitive expressions: Number or Numeral, Name, String
    - Call expressions: Operator(Operand1, Oprand2, ...)
-3. name可以通过import/assignment/ def来绑定
+3. Name可以通过import/assignment/def来绑定
 4. Environment Diagrams:
    - Name -- Value
    - An environment is a sequence of frames.  
@@ -61,9 +63,24 @@ statement由各种expression组成：有数字Number or Numeral、字符串Strin
 - 表达计算，可以计算出值
 - 可以嵌套
 - call expressions的value比较特殊，需要将operator的值（function）应用在operand的值（parameter）上才能得出
-- function也是一种express
 
 **statement**
 
-- Assignment is a simple means of abstraction: binds names to values 就是将等式右边表达式的值赋给等式左边Name类型的表达式
-- Function definition is a more powerful means of abstraction: binds names to expressions 函数调用是一种特殊的表达式
+- Assignment is a simple means of abstraction: binds names to values 将等式右边无论复杂简单表达式的值赋给等式左边Name类型的表达式；抽象的一种
+
+  > Execution rule for assignment statements: 
+  >
+  > 1. Evaluate all expressions to the right of = from left to right.  
+  > 2. Bind all names to the left of = to those resulting values in the current frame. 
+
+- Function definition is a more powerful means of abstraction: binds names to expressions 函数定义将一个function赋给了一个Name类型；这个name对应的更为复杂，所以是更强大的抽象
+
+  > **def <name>(<formal parameters>):**
+  >
+  > ​    **return <return expression>** 
+  >
+  > Execution procedure for def statements: 
+  >
+  > 1. Create a function with signature () 
+  > 2. Set the body of that function to be everything indented after the first line  
+  > 1. Bind <name> to that function in the current frame
