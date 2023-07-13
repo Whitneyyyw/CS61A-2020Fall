@@ -47,10 +47,6 @@ Functions; Values; Objects; Interpreters; Data
    - Primitive expressions: Number or Numeral, Name, String
    - Call expressions: Operator(Operand1, Oprand2, ...)
 3. Name可以通过import/assignment/def来绑定
-4. Environment Diagrams:
-   - Name -- Value
-   - An environment is a sequence of frames.  
-   - A name evaluates to the value bound to that name in the earliest frame of the current  environment in which that name is found. 
 
 我现在的理解：
 
@@ -58,13 +54,13 @@ Functions; Values; Objects; Interpreters; Data
 
 statement由各种expression组成：有数字Number or Numeral、字符串String、函数调用Call expression，比较特殊的是名称Name（其实也是expression的一种），可以用来表示程序状态。
 
-**expression**
+#### expression
 
 - 表达计算，可以计算出值
 - 可以嵌套
-- call expressions的value比较特殊，需要将operator的值（function）应用在operand的值（parameter）上才能得出
+- call expressions的value比较特殊，需要将operator的值（function）应用在operand的值（parameter）上，最后得出的是return的值（默认返回None）
 
-**statement**
+#### statement
 
 - Assignment is a simple means of abstraction: binds names to values 将等式右边无论复杂简单表达式的值赋给等式左边Name类型的表达式；抽象的一种
 
@@ -84,3 +80,23 @@ statement由各种expression组成：有数字Number or Numeral、字符串Strin
   > 1. Create a function with signature () 
   > 2. Set the body of that function to be everything indented after the first line  
   > 1. Bind <name> to that function in the current frame
+
+#### Environment Diagrams
+
+- Name -- Value
+- An environment is a sequence of frames.  & create a new frame = create a new environment
+- A name evaluates to the value bound to that name in the earliest frame of the current  environment in which that name is found.  & 往下传递、往上找；往上传递必须通过return语句，不可能往下找
+- frame -- scope: 方便复用x、y、z、i、j等名称，如果没有作用域和别人合作非常容易冲突
+- function放在objects里，我们关注指向同一对象是否有多个名称
+
+#### python交互式界面
+
+- 可以不需要调用`print()`函数，直接打印出expression的value
+- 对于字符串，调用`print()`打印不显示引号，直接打印显示引号
+
+#### Truthy and Falsey Values: 值的真假
+
+- Python values such as `0`, `None`, `''` (the empty string), and `[]` (the empty list) are considered false values. *All* other values are considered true values.
+
+- `short-circuit` / `not short-circuit`：一旦可以确定表达式的值就停下，返回计算的最后一个东西 （对于`and`和`or`）
+- `not`：只有返回`True`或~
