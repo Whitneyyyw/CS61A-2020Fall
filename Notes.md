@@ -100,3 +100,17 @@ statement由各种expression组成：有数字Number or Numeral、字符串Strin
 
 - `short-circuit` / `not short-circuit`：一旦可以确定表达式的值就停下，返回计算的最后一个东西 （对于`and`和`or`）
 - `not`：只有返回`True`或~
+
+## Debugging
+
+Traceback Messages & Error Messages
+
+REPL: Read-Evaluate-Print-Loop交互式解释器
+
+Debuggging Techniques
+
+- `python -m doctest file.py`
+- `print` statement ------> 长期debug: 设置全局变量 `debug = True / False`，再增加`if debug:` 判断
+- `python -i file.py`
+- [PythonTutor](https://pythontutor.com/cp/composingprograms.html#mode=edit):  create environment diagram，看内部实现
+- `assert`statement ------>可以长期放在代码中，不仅用于debug，而且在条件不满足时直接crash而非得出incorrect结果
